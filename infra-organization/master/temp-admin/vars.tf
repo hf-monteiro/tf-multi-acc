@@ -9,7 +9,7 @@ variable "aws_default_region" {
 }
 
 variable "terraform_state_bucket" {
-    default = "mp-teste5-kxc"
+    default = "put info here!"
 }
 
 variable "terraform_state_bucket_region" {
