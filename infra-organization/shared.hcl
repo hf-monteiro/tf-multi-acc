@@ -1,11 +1,11 @@
 # must match the terragrunt.remote_state.config in terraform.tfvars
-terraform_state_bucket          = "put info here"
+terraform_state_bucket          = "put info here!"
 terraform_state_bucket_region   = "us-east-1"
-terraform_state_dynamodb_table  = "put info here"
-cloudtrail_bucket_name          = "put info here"
+terraform_state_dynamodb_table  = "put info here!"
+cloudtrail_bucket_name          = "put info here!"
 
 aws_default_region         = "us-east-1"
-org_name                   = "put info here"
+org_name                   = "put info here!"
 
 security_acct_email        = "security@aaa.com"
 prod_acct_email            = "prod@aaa.com"
