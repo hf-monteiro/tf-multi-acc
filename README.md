@@ -25,5 +25,5 @@ aws configure
  ```
 3. Run the init.sh script:
 ```shell
- ./init.sh
+ ./init.sh -a terraform_init_access_key -s terraform_init_secret_key -k keybase_profile
  ```

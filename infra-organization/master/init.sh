@@ -4,17 +4,17 @@ set -e -x
 DEFAULT_REGION='us-east-1'
 
 function usage {
-    echo "DESCRIÇÃO:"
-    echo "  Script para inicializar uma estrutura de Contas AWS"
-    echo "  *** DEVE SER RODADO COM AS CREDENCIAIS DE ADMIN PARA O USUÁRIO terraform-init NA CONTA MASTER ***"
+    echo "DESCRIPTION:"
+    echo "  Script to initialize the AWS Account Structure"
+    echo "  *** MUST BE RUN WITH ADMIN CREDENTIALS FOR THE terraform-init USER IN THE MASTER ACCOUNT ***"
     echo ""
-    echo "UTILIZAÇÃO:"
+    echo "USAGE:"
     echo "  init.sh -a terraform_init_access_key -s terraform_init_secret_key -k keybase_profile"
     echo "  [-r default_region] [-l] [-u user_name]"
     echo ""
-    echo "OPÇÕES:"
-    echo "  -l   pular usando o estado local, pode ser usado após o período inicial"
-    echo "  -u   gerar uma senha para um usuário especificado - só funcionará se o usuário ainda não tiver uma senha"
+    echo "OPTIONS:"
+    echo "  -l   skip using local state, can be used after initial period"
+    echo "  -u   generate a password for a specified user - will only work if the user doesn't already have a password"
 }
 
 function pushd () {
@@ -38,7 +38,7 @@ while getopts "a:s:k:r:lu:h" option; do
             exit 0
             ;;
         \? )
-            echo "Opção inválida: -$OPTARG" 1>&2
+            echo "Invalid option: -$OPTARG" 1>&2
             usage
             exit 1
             ;;
@@ -153,8 +153,8 @@ if [[ -n "${LOGIN_USER}" ]]; then
     echo "One-time password for ${LOGIN_USER}: $(echo ${ENCRYPTED_PASS} | base64 --decode | keybase pgp decrypt)"
 fi
 
-echo "Login URL: https://${SECURITY_ALIAS}.signin.aws.amazon.com/console"
-echo "Switch Role URLs -"
+echo " Login URL: https://${SECURITY_ALIAS}.signin.aws.amazon.com/console"
+echo " Switch Role URLs -"
 echo " Security Admin: https://signin.aws.amazon.com/switchrole?roleName=Administrator&account=${SECURITY_ALIAS}"
 echo " Prod Admin: https://signin.aws.amazon.com/switchrole?roleName=Administrator&account=${PROD_ALIAS}"
 echo " Stage Admin: https://signin.aws.amazon.com/switchrole?roleName=Administrator&account=${STAGE_ALIAS}"
